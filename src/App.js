@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import './App.css';
 import Graph from './Graph.js'
-import Navbar from './Navbar.js'
+import { Header } from 'semantic-ui-react'
+
+
 
 import 'bootstrap/dist/css/bootstrap.css';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
+
 import RangeSlider from 'react-bootstrap-range-slider'
-import { Button, Container, Form, Card, } from 'react-bootstrap';
+import { Button, Container, Form, Card,Row, Col, Navbar } from 'react-bootstrap';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
@@ -108,59 +111,77 @@ onEnter(e) {
 }
 
 
-  render() {
-    let diseaseName = this.state.value
+render(){
+  let diseaseName = this.state.value
+  return( 
+    <Container style = {{height: '1920px', width: '1080' }}>
+       <Row style={{display: 'flex', justifyContent: 'center'}}>
+       <h1>Disease - Protein - Drug </h1>
+        
+        </Row>
 
-    return (
-      <Container className="App">
-          <h1 className="header">BGU's  Disease-Protein-Drug</h1>
-          <Card>
-          <Form>
-            <Form.Group controlId="formBasicRange">
-             <Form.Control type="email" placeholder="Enter Disease Name" 
-             value={diseaseName}
-             onChange={(e) => this.onInput(e)}
-             />
-              <Form.Label>Zoom</Form.Label>
-              <RangeSlider
+          <Row>
+            <Col xs={2} style={{ backgroundColor: '#F0B27A ', height: 'auto' }}>
+              <img src = 'BGU_logo.png' class="img-fluid"/>
+            </Col>
+            <Col xs={6}>
+               <Row style={{backgroundColor: '#F0B27A '}}>
+                 <h2 style={{backgroundColor: '#F0B27A '}}>Search Bar</h2>
+               </Row>
+                <Row style={{backgroundColor: '#F0B27A ',height:'auto'}}>
 
-              />
-           </Form.Group>
-          </Form>
-         <Button variant="outline-primary"
-            className="button"
-            onClick={(e) => this.onEnter(e)}> SUMBIT
-          </Button>
+                  <Form>
+                    <Form.Group controlId="formBasicRange">
+                      <Form.Control type="text" placeholder="Enter Disease Name" 
+                      value={diseaseName}
+                      onChange={(e) => this.onInput(e)}
+                      />
+                      <Button variant="primary"
+                        className="button"
+                        onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                      </Button>
+                    </Form.Group>
+                    </Form>
+                </Row>
+                <Row  style={{backgroundColor: '#F0B27A '}}>
+ @Facebash
+                </Row>
+{/*
+              <Row style={{backgroundColor: 'Teal'}}>
 
+                <RangeSlider   />
+              </Row>
+*/}
+
+            </Col>
           
-        { this.state.view ?  <Graph width ={1080} height = {720} jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
-          : null
-         }
-        </Card>
-      </Container>
-     /* {
-      <Container className="App">
-          <Form className="form">
-          <input
-            className="enter"
-            value={diseaseName}
-            onChange={(e) => this.onInput(e)}
-            placeholder="Enter disease name here..."
-          />
-         <button
-            className="button"
-            onClick={(e) => this.onEnter(e)}> SUMBIT
-          </button>
-        </Form>
-        { this.state.view ?   <Graph jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
-         : null }
-        {// 
-        }
-      </Container>
-      }*/
-      
-    );
-  }
+            <Col xs={2}>
+                  <Row style={{ backgroundColor: 'white', height: 'auto' , color: 'black', border: 'outset', fontSize:'19px'}}>
+                     <p><b><u>Legend</u><br></br> </b> <br/>
+
+                  <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
+
+                      <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+
+                      <span class="c-d-cl"><span></span></span><b>Drug</b></p>
+                  </Row>
+              </Col>
+
+          </Row>
+
+          <Row style={{ backgroundColor: '#FEF9E7', position: 'relative', height: '1080px', width: '1920px' }}>
+            
+              { 
+                this.state.view ? <Graph  jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
+                null 
+              }
+            
+          
+          </Row>
+    </Container>
+  )
+
+}
 }
 
 export default App;

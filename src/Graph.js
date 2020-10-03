@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as d3 from 'd3'
+import { Container,Card } from "react-bootstrap";
 
 class Graph extends Component {
     constructor(props) {
@@ -23,10 +24,13 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
-            <div
-            ref='canvas'
-           
-          />
+
+                <svg className = 'GraphSvg'
+                ref='canvas'
+                style={{ backgroundColor: '#FEF9E7 ', width:'100%', height: '100%', overflow: 'auto' }}>
+
+                </svg>
+   
        
         );}
 
@@ -38,41 +42,41 @@ class Graph extends Component {
                     let nodes = []
                     let links = []
                     let i = 1
-                    //var diseaseJSON = JSON.parse(data)
                     nodes.push({id:diseaseName, name:diseaseName, type:"disease"})
                     
-                    /*var proteins = diseaseJSON[diseaseName]
-                    for(var protein in proteins) {
-                        nodes.push({id:proteins[protein], type:"protein"})
-                        links.push({target:proteins[protein], source:diseaseName})
-                    }*/
+                 
                     for(var protein in prots) {
                         nodes.push({id:prots[protein],name:prots[protein], type:"protein"})
                         links.push({target:prots[protein], source:diseaseName})
                         //console.log('protein: ' + prots[protein] + ' drugs: ' + drugs[prots[protein]])
-                        for(var drug in drugs[prots[protein]]){
+                        if(drugs[prots[protein]].length < 10)
+                        { 
+                           for(var drug in drugs[prots[protein]]){
                             let drugName = drugs[prots[protein]][drug]
                             nodes.push({id:`${drugName}${i}`, name:drugName, type:'drug'})
                             links.push({target: `${drugName}${i}`, source: prots[protein]})
-                            i++
+                            i++}
 
                         }
                     }
-                var width = 1080 //window.innerWidth
-                var height = 720//window.innerHeight
+                var width = 1920 //window.innerWidth
+                var height = 1080//window.innerHeight
 
 
-                //var svg = d3.select(this.refs.canvas)
-                var svg = d3.select(this.refs.canvas).append('svg').attr('viewbox',[0,0,width,height])
-                //svg.attr('width', width).attr('height', height)
+                var svg = d3.select(this.refs.canvas).attr('viewbox',[0,0,width,height])
+            
+               /*
                 svg.call(d3.zoom()
-                    .extent([[0, 0], [width, height]])
+                    //.extent([[0, 0], [width, height]])
                     .scaleExtent([1, 8])
                     .on("zoom", zoomed));
+                */
 
                 function zoomed({transform}) {
-                    svg.attr("transform", transform);
-                    }
+                    nodeElementsProteins.attr("transform", d => `translate(${transform.apply(d)})`);
+                    nodeElementsDiseases.attr("transform", d => `translate(${transform.apply(d)})`);    
+                    nodeElementsDrugs.attr("transform", d => `translate(${transform.apply(d)})`);
+                }
                     
                 var linkForce = d3
                 .forceLink()
@@ -114,6 +118,8 @@ class Graph extends Component {
                 .enter().append("circle")
                     .attr("r", 10)
                     .attr("fill", getNodeColor)
+                    .attr("transform", d => `translate(${d})`)
+                    
 
                 var nodeElementsDiseases = svg.append("g")
                     .attr("class", "nodes")
@@ -123,6 +129,7 @@ class Graph extends Component {
                     .attr("width", 20)
                     .attr("height", 20)
                     .attr("fill", getNodeColor)
+                    .attr("transform", d => `translate(${d})`)
 
                 var nodeElementsDrugs = svg.append("g")
                     .attr("class", "nodes")
@@ -131,6 +138,7 @@ class Graph extends Component {
                     .enter().append("circle")
                         .attr("r", 5)
                         .attr("fill", getNodeColor)
+                        .attr("transform", d => `translate(${d})`)
                     
 
                 var textElements = svg.append("g")
@@ -139,14 +147,18 @@ class Graph extends Component {
                 .data(nodes)
                 .enter().append("text")
                     .text(function (node) { return  node.name })
-                    .attr("font-size", 10)
+                    .attr("font-size", 12)
                     .attr("dx", 15)
                     .attr("dy", 4)
-                const radius = 6
+                    .attr("fill", getNodeColor)
+                    .attr("fontWeight","bold")
+                    .attr("transform", d => `translate(${d})`)
+
+
                 simulation.nodes(nodes).on('tick', () => {
                     nodeElementsProteins
-                    .attr('cx', function (node) { return Math.max(radius, Math.min(width - radius, node.x))})//node.x })
-                    .attr('cy', function (node) { return Math.max(radius, Math.min(width - radius, node.y))})//node.y })
+                    .attr('cx', function (node) { return node.x })
+                    .attr('cy', function (node) { return node.y })
                 nodeElementsDiseases
                     .attr('x', function (node) { return node.x })
                     .attr('y', function (node) { return node.y })
