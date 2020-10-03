@@ -59,8 +59,8 @@ class Graph extends Component {
 
                         }
                     }
-                var width = window.innerWidth
-                var height = window.innerHeight
+                var width = 1080 //window.innerWidth
+                var height = 720//window.innerHeight
 
 
                 var svg = d3.select(this.refs.canvas)
