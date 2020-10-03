@@ -2,8 +2,16 @@ import React, { Component } from 'react';
 import './App.css';
 import Graph from './Graph.js'
 import Navbar from './Navbar.js'
-import {withFauxDOM} from 'react-faux-dom'
 
+import 'bootstrap/dist/css/bootstrap.css';
+import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
+
+import RangeSlider from 'react-bootstrap-range-slider'
+import { Button, Container, Form, Card, } from 'react-bootstrap';
+import { MemoryRouter, Switch, Route } from 'react-router-dom';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
+import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends Component {
 
@@ -11,6 +19,7 @@ class App extends Component {
     super(props)
     var input = ''
     this.state = {
+      userName: 'Barak',
       value: '',
       disease:'',
       jsonData: {},
@@ -18,10 +27,6 @@ class App extends Component {
       drugs: [],
       view: false
     }
-
-
-              
-
   }
   
  componentDidMount(){
@@ -95,15 +100,41 @@ onEnter(e) {
   this.setState(prevState => ( {
     view: true
     }))
-  this.getData()
+  this.getData()  
 }
 
 
   render() {
     let diseaseName = this.state.value
+
     return (
-      <div className="App">
-          <form className="form">
+      <Container className="App">
+          <h1 className="header">Disease-Protein-Drug Visualization</h1>
+          <Card>
+          <Form>
+            <Form.Group controlId="formBasicRange">
+             <Form.Control type="email" placeholder="Enter Disease Name" 
+             value={diseaseName}
+             onChange={(e) => this.onInput(e)}
+             />
+              <Form.Label>Zoom</Form.Label>
+              <RangeSlider
+
+              />
+           </Form.Group>
+          </Form>
+         <Button variant="outline-primary"
+            className="button"
+            onClick={(e) => this.onEnter(e)}> SUMBIT
+          </Button>
+        { this.state.view ?  <Graph jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
+          : null
+         }
+        </Card>
+      </Container>
+     /* {
+      <Container className="App">
+          <Form className="form">
           <input
             className="enter"
             value={diseaseName}
@@ -114,12 +145,13 @@ onEnter(e) {
             className="button"
             onClick={(e) => this.onEnter(e)}> SUMBIT
           </button>
-        </form>
+        </Form>
         { this.state.view ?   <Graph jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
          : null }
         {// 
         }
-      </div>
+      </Container>
+      }*/
       
     );
   }
