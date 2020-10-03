@@ -23,10 +23,9 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
-            <svg
+            <div
             ref='canvas'
-            width='1980'
-            height='1080'
+           
           />
        
         );}
@@ -63,9 +62,18 @@ class Graph extends Component {
                 var height = 720//window.innerHeight
 
 
-                var svg = d3.select(this.refs.canvas)
-                svg.attr('width', width).attr('height', height)
+                //var svg = d3.select(this.refs.canvas)
+                var svg = d3.select(this.refs.canvas).append('svg').attr('viewbox',[0,0,width,height])
+                //svg.attr('width', width).attr('height', height)
+                svg.call(d3.zoom()
+                    .extent([[0, 0], [width, height]])
+                    .scaleExtent([1, 8])
+                    .on("zoom", zoomed));
 
+                function zoomed({transform}) {
+                    svg.attr("transform", transform);
+                    }
+                    
                 var linkForce = d3
                 .forceLink()
                 .id(function (link) { return link.id })
@@ -73,7 +81,7 @@ class Graph extends Component {
                 // simulation setup with all forces
                 var simulation = d3
                 .forceSimulation()
-                .force('charge', d3.forceManyBody().strength(-600))
+                .force('charge', d3.forceManyBody().strength(-300))
                 .force('center', d3.forceCenter(width / 2, height / 2))
                 .force('link',linkForce)
 
@@ -131,14 +139,14 @@ class Graph extends Component {
                 .data(nodes)
                 .enter().append("text")
                     .text(function (node) { return  node.name })
-                    .attr("font-size", 15)
+                    .attr("font-size", 10)
                     .attr("dx", 15)
                     .attr("dy", 4)
-
+                const radius = 6
                 simulation.nodes(nodes).on('tick', () => {
                     nodeElementsProteins
-                    .attr('cx', function (node) { return node.x })
-                    .attr('cy', function (node) { return node.y })
+                    .attr('cx', function (node) { return Math.max(radius, Math.min(width - radius, node.x))})//node.x })
+                    .attr('cy', function (node) { return Math.max(radius, Math.min(width - radius, node.y))})//node.y })
                 nodeElementsDiseases
                     .attr('x', function (node) { return node.x })
                     .attr('y', function (node) { return node.y })

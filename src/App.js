@@ -27,6 +27,10 @@ class App extends Component {
       drugs: [],
       view: false
     }
+
+
+              
+
   }
   
  componentDidMount(){
@@ -109,7 +113,7 @@ onEnter(e) {
 
     return (
       <Container className="App">
-          <h1 className="header">Disease-Protein-Drug Visualization</h1>
+          <h1 className="header">BGU's  Disease-Protein-Drug</h1>
           <Card>
           <Form>
             <Form.Group controlId="formBasicRange">
@@ -127,7 +131,9 @@ onEnter(e) {
             className="button"
             onClick={(e) => this.onEnter(e)}> SUMBIT
           </Button>
-        { this.state.view ?  <Graph jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
+
+          
+        { this.state.view ?  <Graph width ={1080} height = {720} jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
           : null
          }
         </Card>
