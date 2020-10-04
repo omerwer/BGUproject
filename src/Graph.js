@@ -31,10 +31,11 @@ class Graph extends Component {
                            style={{ backgroundColor: 'white',  height: '1080px', width: '1920px', overflow: 'auto',
                            border: '3px solid green' }}
                             ref='canvas'>
+                    
+
                         </svg>
                     </Col>
                 </Row>
-
    
        
         );
@@ -106,7 +107,7 @@ class Graph extends Component {
 
                 function getNodeColor(node) {
                 return node.type === 'disease' ? 'red' :
-                node.type === 'protein' ? 'blue' : '#348017'
+                node.type === 'protein' ? 'blue' : 'green'
                 }
 
                 function getProteins(nodesList) {
@@ -125,6 +126,11 @@ class Graph extends Component {
                 .enter().append("circle")
                     .attr("r", 10)
                     .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "blue")
+                    })
                     
 
                 var nodeElementsDiseases = svg.append("g")
@@ -135,6 +141,11 @@ class Graph extends Component {
                     .attr("width", 20)
                     .attr("height", 20)
                     .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "red")
+                    })
 
                 var nodeElementsDrugs = svg.append("g")
                     .attr("class", "nodes")
@@ -143,6 +154,11 @@ class Graph extends Component {
                     .enter().append("circle")
                         .attr("r", 5)
                         .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "#348017")
+                    })
                     
 
                 var textElements = svg.append("g")

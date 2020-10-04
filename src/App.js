@@ -10,7 +10,7 @@ import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 
 import RangeSlider from 'react-bootstrap-range-slider'
-import { Button, Container, Form, Card,Row, Col, Navbar } from 'react-bootstrap';
+import { Button, Container, Form, Card,Row, Col, Navbar,Fade } from 'react-bootstrap';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
@@ -28,7 +28,8 @@ class App extends Component {
       jsonData: {},
       jsonDrugs: {},
       drugs: [],
-      view: false
+      view: false,
+      open :false
     }
 
 
@@ -82,8 +83,11 @@ class App extends Component {
 
   this.setState({
     value: e.target.value,
-    view: false
+    view: false,
+    open:false
   })
+  console.log('key')
+
 }
 
 
@@ -103,11 +107,13 @@ getData(){
               
 
 onEnter(e) {
+  console.log('enter')
   e.preventDefault()
   this.setState(prevState => ( {
-    view: true
+    view: true,
+    open:true
     }))
-  this.getData()  
+  //this.getData()  
 }
 
 
@@ -145,8 +151,23 @@ render(){
                         />
                         <Button variant="primary"
                           className="button"
-                          onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                          onClick={(e) => {
+                            this.getData()
+                            this.onEnter(e);
+                                         //  this.setState( prevState=> ({open: !this.state.open, view: true}) ) 
+                                }
+                        }
+                          
+                          aria-controls="example-fade-text"
+                          aria-expanded={this.state.open}  > SUMBIT <br/>
                         </Button>
+                        {/* <Fade in={this.state.open}>
+        <div id="example-fade-text">
+          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
+          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
+          labore wes anderson cred nesciunt sapiente ea proident.
+        </div>
+      </Fade> */}
                       </Form.Group>
                       </Form>
 
@@ -179,11 +200,17 @@ render(){
 
           <Row fluid style={{height: '1080px', width: '1800px'}}> 
             <Col  fluid tyle={{ height: '1080px', width: '1800px' ,backgroundColor: 'green'}}>
+            <Fade in={this.state.open}>
+              <div id="example-fade-text">
               { 
-                this.state.view ? <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
-                null 
-              }
+                     <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> 
+                      
+                    }
+              </div>
+            </Fade>
+             
             </Col>
+          
           </Row>
 
           { /*******************END OF Graph Chart ********************/}
