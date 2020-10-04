@@ -17,8 +17,12 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends Component {
+/*TEST GIT*/
 
   constructor(props) {
+    var test = 1
+    var test2 =2
+
     super(props)
     var input = ''
     this.state = {
