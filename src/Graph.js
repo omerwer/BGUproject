@@ -27,7 +27,7 @@ class Graph extends Component {
 
                 <svg className = 'GraphSvg'
                 ref='canvas'
-                style={{ backgroundColor: '#FEF9E7 ', width:'100%', height: '100%', overflow: 'auto' }}>
+                style={{ backgroundColor: 'white', width:'100%', height: '100%', overflow: 'auto' }}>
 
                 </svg>
    
@@ -99,7 +99,7 @@ class Graph extends Component {
 
                 function getNodeColor(node) {
                 return node.type === 'disease' ? 'red' :
-                node.type === 'protein' ? 'blue' : 'green'
+                node.type === 'protein' ? 'blue' : '#348017'
                 }
 
                 function getProteins(nodesList) {
