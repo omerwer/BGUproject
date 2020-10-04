@@ -113,22 +113,25 @@ onEnter(e) {
 
 render(){
   let diseaseName = this.state.value
-  return( 
+  return(
+      <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
+          backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container style = {{height: '1920px', width: '1080' }}>
-       <Row style={{display: 'flex', justifyContent: 'center'}}>
-       <h1>Disease - Protein - Drug </h1>
+       <Row style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
+           textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>
+       <h1>Disease - Protein - Drug Visualization</h1>
         
         </Row>
 
           <Row>
-            <Col xs={2} style={{ backgroundColor: '#F0B27A ', height: 'auto' }}>
-              <img src = 'BGU_logo.png' class="img-fluid"/>
+            <Col xs={2} style={{ height: 'auto' }}>
+              <img src = "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Ben-Gurion_University_of_the_Negev.svg/1200px-Ben-Gurion_University_of_the_Negev.svg.png" class="img-fluid"/>
             </Col>
             <Col xs={6}>
-               <Row style={{backgroundColor: '#F0B27A '}}>
-                 <h2 style={{backgroundColor: '#F0B27A '}}>Search Bar</h2>
+               <Row style={{}}>
+                   <h2 style={{color: '#842DCE'}}><br></br></h2>
                </Row>
-                <Row style={{backgroundColor: '#F0B27A ',height:'auto'}}>
+                <Row style={{height:'auto'}}>
 
                   <Form>
                     <Form.Group controlId="formBasicRange">
@@ -138,13 +141,13 @@ render(){
                       />
                       <Button variant="primary"
                         className="button"
-                        onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                        onClick={(e) => this.onEnter(e)}> SUBMIT <br/>
                       </Button>
                     </Form.Group>
                     </Form>
                 </Row>
-                <Row  style={{backgroundColor: '#F0B27A '}}>
- @Facebash
+                <Row  style={{color: 'green'}}>
+.
                 </Row>
 {/*
               <Row style={{backgroundColor: 'Teal'}}>
@@ -155,30 +158,31 @@ render(){
 
             </Col>
           
-            <Col xs={2}>
-                  <Row style={{ backgroundColor: 'white', height: 'auto' , color: 'black', border: 'outset', fontSize:'19px'}}>
-                     <p><b><u>Legend</u><br></br> </b> <br/>
 
-                  <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
-
-                      <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
-
-                      <span class="c-d-cl"><span></span></span><b>Drug</b></p>
-                  </Row>
-              </Col>
 
           </Row>
+        <Col xs={4}>
+            <Row style={{height: 'auto' , color: 'white', fontSize:'19px',}}>
+                <p>
 
-          <Row style={{ backgroundColor: '#FEF9E7', position: 'relative', height: '1080px', width: '1920px' }}>
+                    <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
+
+                    <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+
+                    <span class="c-d-cl"><span></span></span><b>Drug</b></p>
+            </Row>
+        </Col>
+          <Row style={{position: 'relative', height: '1080px', width: '1920px' }}>
             
               { 
                 this.state.view ? <Graph  jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
                 null 
               }
-            
+
           
           </Row>
     </Container>
+      </body>
   )
 
 }
