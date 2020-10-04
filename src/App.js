@@ -120,7 +120,7 @@ onEnter(e) {
 render(){
   let diseaseName = this.state.value
   return( 
-  <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
+  <body style = {{backgroundImage: 'url(https://eskipaper.com/images/high-res-abstract-backgrounds-1.jpg)',
     backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container fluid  >
     { /******************* Site Header  ********************/}
@@ -137,11 +137,11 @@ render(){
 
               { /******************* Header and Search Bar  ********************/}
 
-              <Col xs={5}>
+              <Col xs={8}>
               <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
                   textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
  
-                    <Form ><br/>
+                    <Form style={{paddingLeft:'200px', paddingRight:'200px'}}><br/>
                       <Form.Group controlId="formBasicRange">
                         <Form.Control type="text" placeholder="Enter Disease Name" 
                         value={diseaseName}
@@ -149,7 +149,7 @@ render(){
                         style={{display: 'flex', justifyContent: 'center'}}
                         
                         />
-                        <Button variant="primary"
+                        <Button  variant="primary"
                           className="button"
                           onClick={(e) => {
                             this.getData()
