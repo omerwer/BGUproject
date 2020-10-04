@@ -113,76 +113,85 @@ onEnter(e) {
 
 render(){
   let diseaseName = this.state.value
-  return(
-      <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
-          backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
-    <Container style = {{height: '1920px', width: '1080' }}>
-       <Row style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
-           textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>
-       <h1>Disease - Protein - Drug Visualization</h1>
-        
-        </Row>
+  return( 
+  <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
+    backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
+    <Container fluid  >
+    { /******************* Site Header  ********************/}
 
-          <Row>
-            <Col xs={2} style={{ height: 'auto' }}>
-              <img src = "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Ben-Gurion_University_of_the_Negev.svg/1200px-Ben-Gurion_University_of_the_Negev.svg.png" class="img-fluid"/>
-            </Col>
-            <Col xs={6}>
-               <Row style={{}}>
-                   <h2 style={{color: '#842DCE'}}><br></br></h2>
-               </Row>
-                <Row style={{height:'auto'}}>
+      <Row >
+        <Col> 
+            <Row>
+            { /******************* LOGO  ********************/}
 
-                  <Form>
-                    <Form.Group controlId="formBasicRange">
-                      <Form.Control type="text" placeholder="Enter Disease Name" 
-                      value={diseaseName}
-                      onChange={(e) => this.onInput(e)}
-                      />
-                      <Button variant="primary"
-                        className="button"
-                        onClick={(e) => this.onEnter(e)}> SUBMIT <br/>
-                      </Button>
-                    </Form.Group>
-                    </Form>
-                </Row>
-                <Row  style={{color: 'green'}}>
-.
-                </Row>
-{/*
-              <Row style={{backgroundColor: 'Teal'}}>
-
-                <RangeSlider   />
-              </Row>
-*/}
-
-            </Col>
-          
+              <Col xs={1.5}>
+                <img src = "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Ben-Gurion_University_of_the_Negev.svg/1200px-Ben-Gurion_University_of_the_Negev.svg.png"  style={{  height: '200px', width: '200px' }}/>
+              </Col>
 
 
-          </Row>
-        <Col xs={4}>
-            <Row style={{height: 'auto' , color: 'white', fontSize:'19px',}}>
-                <p>
+              { /******************* Header and Search Bar  ********************/}
 
+              <Col xs={4}>
+              <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
+                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
+ 
+                    <Form >
+                      <Form.Group controlId="formBasicRange">
+                        <Form.Control type="text" placeholder="Enter Disease Name" 
+                        value={diseaseName}
+                        onChange={(e) => this.onInput(e)}
+                        style={{display: 'flex', justifyContent: 'center'}}
+                        
+                        />
+                        <Button variant="primary"
+                          className="button"
+                          onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                        </Button>
+                      </Form.Group>
+                      </Form>
+
+              </Col>
+
+
+              { /******************* Legend  ********************/}
+
+              <Col xs={8} style={{height: 'auto' , color: 'white', fontSize:'19px',}}>
+                {   
+                this.state.view ? 
+                    <p>
                     <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
 
                     <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
 
                     <span class="c-d-cl"><span></span></span><b>Drug</b></p>
-            </Row>
-        </Col>
-          <Row style={{position: 'relative', height: '1080px', width: '1920px' }}>
-            
+                    :  null
+                  }
+              </Col>  
+
+              </Row>
+            </Col>
+          </Row>
+
+          { /******************* END OF Header  ********************/}
+
+
+          { /*******************Graph Chart ********************/}
+
+          <Row fluid style={{height: '1080px', width: '1800px'}}> 
+            <Col  fluid tyle={{ height: '1080px', width: '1800px' ,backgroundColor: 'green'}}>
               { 
-                this.state.view ? <Graph  jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
+                this.state.view ? <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
                 null 
               }
-
-          
+            </Col>
           </Row>
+
+          { /*******************END OF Graph Chart ********************/}
+
+
     </Container>
-      </body>
+    </body>
+
   )
 
 }
