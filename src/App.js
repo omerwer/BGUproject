@@ -20,8 +20,7 @@ class App extends Component {
 /*TEST GIT*/
 
   constructor(props) {
-    var test = 1
-    var test2 =2
+
 
     super(props)
     var input = ''
