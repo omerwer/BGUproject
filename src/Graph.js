@@ -25,8 +25,8 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
-                <Row >
-                    <Col >
+                <Row>
+                    <Col>
                         <svg className = 'GraphSvg' 
                            style={{ backgroundColor: 'white',  height: '1080px', width: '100%', overflow: 'auto',
                            border: '3px solid green' }}
@@ -68,6 +68,7 @@ class Graph extends Component {
                     }
                 var width = window.innerWidth //window.innerWidth
                 var height = window.innerHeight //window.innerHeight
+
 
 
                 var svg = d3.select(this.refs.canvas).attr('viewbox',[0,0,width,height])
