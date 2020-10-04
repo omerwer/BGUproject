@@ -17,11 +17,8 @@ import ButtonToolbar from 'react-bootstrap/ButtonToolbar';
 import { LinkContainer } from 'react-router-bootstrap';
 
 class App extends Component {
-/*TEST GIT*/
 
   constructor(props) {
-
-
     super(props)
     var input = ''
     this.state = {
@@ -117,70 +114,74 @@ onEnter(e) {
 render(){
   let diseaseName = this.state.value
   return( 
-    <Container style = {{height: '1920px', width: '1080' }}>
-       <Row style={{display: 'flex', justifyContent: 'center'}}>
-       <h1>Disease - Protein - Drug </h1>
-        
-        </Row>
+    <Container fluid  >
+    { /******************* Header  ********************/}
 
+      <Row >
+        <Col> 
           <Row>
-            <Col xs={2} style={{ backgroundColor: '#F0B27A ', height: 'auto' }}>
-              <img src = 'BGU_logo.png' class="img-fluid"/>
+            <Col>
+              <h1>Disease - Protein - Drug </h1>
             </Col>
-            <Col xs={6}>
-               <Row style={{backgroundColor: '#F0B27A '}}>
-                 <h2 style={{backgroundColor: '#F0B27A '}}>Search Bar</h2>
-               </Row>
-                <Row style={{backgroundColor: '#F0B27A ',height:'auto'}}>
-
-                  <Form>
-                    <Form.Group controlId="formBasicRange">
-                      <Form.Control type="text" placeholder="Enter Disease Name" 
-                      value={diseaseName}
-                      onChange={(e) => this.onInput(e)}
-                      />
-                      <Button variant="primary"
-                        className="button"
-                        onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
-                      </Button>
-                    </Form.Group>
-                    </Form>
-                </Row>
-                <Row  style={{backgroundColor: '#F0B27A '}}>
- @Facebash
-                </Row>
-{/*
-              <Row style={{backgroundColor: 'Teal'}}>
-
-                <RangeSlider   />
-              </Row>
-*/}
-
-            </Col>
-          
-            <Col xs={2}>
-                  <Row style={{ backgroundColor: 'white', height: 'auto' , color: 'black', border: 'outset', fontSize:'19px'}}>
-                     <p><b><u>Legend</u><br></br> </b> <br/>
-
-                  <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
-
-                      <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
-
-                      <span class="c-d-cl"><span></span></span><b>Drug</b></p>
-                  </Row>
-              </Col>
-
           </Row>
 
-          <Row style={{ backgroundColor: '#FEF9E7', position: 'relative', height: '1080px', width: '1920px' }}>
-            
+                <Row>
+                  <Col xs={2} style={{ backgroundColor: '#F0B27A ', height: 'auto' }}>
+                    <img src = 'BGU_logo.png' class="img-fluid"/>
+                  </Col>
+
+                  <Col xs={6}>
+
+                      <h2 style={{backgroundColor: '#F0B27A '}}>Search Bar</h2>
+
+                        <Form>
+                          <Form.Group controlId="formBasicRange">
+                            <Form.Control type="text" placeholder="Enter Disease Name" 
+                            value={diseaseName}
+                            onChange={(e) => this.onInput(e)}
+                            />
+                            <Button variant="primary"
+                              className="button"
+                              onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                            </Button>
+                          </Form.Group>
+                          </Form>
+
+                  </Col>
+                
+                  <Col xs={2}>
+                        <div style={{ backgroundColor: 'white', height: 'auto' , color: 'black', border: 'outset', fontSize:'19px'}}>
+                        <p><b><u>Legend</u><br></br> </b> <br/>
+
+                      <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
+
+                          <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+
+                          <span class="c-d-cl"><span></span></span><b>Drug</b></p>
+                      </div>
+                  </Col>
+
+              </Row>
+            </Col>
+          </Row>
+          { /******************* END OF Header  ********************/}
+
+
+          { /*******************Graph Chart ********************/}
+
+          <Row fluid style={{ backgroundColor: 'blue'}}> 
+            <Col fluid tyle={{ backgroundColor: 'green'}}>
               { 
-                this.state.view ? <Graph  jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
+                this.state.view ? <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
                 null 
               }
-            
+            </Col>
           
           </Row>
+
+          { /*******************END OF Graph Chart ********************/}
+
+
     </Container>
   )
 

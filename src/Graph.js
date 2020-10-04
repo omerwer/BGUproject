@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from 'd3'
 import { Container,Card } from "react-bootstrap";
+import { Row, Col, Navbar } from 'react-bootstrap';
 
 class Graph extends Component {
     constructor(props) {
@@ -24,15 +25,20 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
+                <Row fluid style ={{backgroundColor:'red'}}>
+                    <Col fluid>
+                        <svg className = 'GraphSvg' 
+                            style ={{ heigh: '1000px', width:'1000px'}}
+                            ref='canvas'>
+                    
 
-                <svg className = 'GraphSvg'
-                ref='canvas'
-                style={{ backgroundColor: '#FEF9E7 ', width:'100%', height: '100%', overflow: 'auto' }}>
-
-                </svg>
+                        </svg>
+                    </Col>
+                </Row>
    
        
-        );}
+        );
+    }
 
 
     makeGraph(data, diseaseName, prots,drugs) {
@@ -71,13 +77,14 @@ class Graph extends Component {
                     .scaleExtent([1, 8])
                     .on("zoom", zoomed));
                 */
-
+/*
                 function zoomed({transform}) {
                     nodeElementsProteins.attr("transform", d => `translate(${transform.apply(d)})`);
                     nodeElementsDiseases.attr("transform", d => `translate(${transform.apply(d)})`);    
                     nodeElementsDrugs.attr("transform", d => `translate(${transform.apply(d)})`);
                 }
                     
+                */
                 var linkForce = d3
                 .forceLink()
                 .id(function (link) { return link.id })
@@ -118,7 +125,6 @@ class Graph extends Component {
                 .enter().append("circle")
                     .attr("r", 10)
                     .attr("fill", getNodeColor)
-                    .attr("transform", d => `translate(${d})`)
                     
 
                 var nodeElementsDiseases = svg.append("g")
@@ -129,7 +135,6 @@ class Graph extends Component {
                     .attr("width", 20)
                     .attr("height", 20)
                     .attr("fill", getNodeColor)
-                    .attr("transform", d => `translate(${d})`)
 
                 var nodeElementsDrugs = svg.append("g")
                     .attr("class", "nodes")
@@ -138,7 +143,6 @@ class Graph extends Component {
                     .enter().append("circle")
                         .attr("r", 5)
                         .attr("fill", getNodeColor)
-                        .attr("transform", d => `translate(${d})`)
                     
 
                 var textElements = svg.append("g")
@@ -152,7 +156,6 @@ class Graph extends Component {
                     .attr("dy", 4)
                     .attr("fill", getNodeColor)
                     .attr("fontWeight","bold")
-                    .attr("transform", d => `translate(${d})`)
 
 
                 simulation.nodes(nodes).on('tick', () => {
