@@ -27,7 +27,8 @@ class Graph extends Component {
 
                 <svg className = 'GraphSvg'
                 ref='canvas'
-                style={{ backgroundColor: 'white', width:'100%', height: '100%', overflow: 'auto' }}>
+                style={{ backgroundColor: 'white', width:'100%', height: '100%', overflow: 'auto',
+                    border: '3px solid green' }}>
 
                 </svg>
    
