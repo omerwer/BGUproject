@@ -120,7 +120,7 @@ onEnter(e) {
 render(){
   let diseaseName = this.state.value
   return( 
-  <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
+  <body style = {{backgroundImage: 'url(https://eskipaper.com/images/high-res-abstract-backgrounds-1.jpg)',
     backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container fluid  >
     { /******************* Site Header  ********************/}
@@ -137,11 +137,11 @@ render(){
 
               { /******************* Header and Search Bar  ********************/}
 
-              <Col xs={5}>
+              <Col xs={8}>
               <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
                   textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
  
-                    <Form ><br/>
+                    <Form style={{paddingLeft:'200px', paddingRight:'200px'}}><br/>
                       <Form.Group controlId="formBasicRange">
                         <Form.Control type="text" placeholder="Enter Disease Name" 
                         value={diseaseName}
@@ -161,7 +161,19 @@ render(){
                           aria-controls="example-fade-text"
                           aria-expanded={this.state.open}  > SUBMIT <br/>
                         </Button>
-                        {/* <Fade in={this.state.open}>
+                          <div  style={{height: 'auto' , color: 'white', fontSize:'19px', marginLeft:'960px', width:'200px'}}>
+                              {
+                                  this.state.view ?
+                                      <p>
+                                          <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
+
+                                          <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+
+                                          <span class="c-d-cl"><span></span></span><b>Drug</b></p>
+                                      :  null
+                              }
+                          </div>
+                          {/* <Fade in={this.state.open}>
         <div id="example-fade-text">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
           terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
@@ -176,18 +188,7 @@ render(){
 
               { /******************* Legend  ********************/}
 
-              <Col xs={8} style={{height: 'auto' , color: 'white', fontSize:'19px',}}>
-                {   
-                this.state.view ? 
-                    <p>
-                    <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
 
-                    <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
-
-                    <span class="c-d-cl"><span></span></span><b>Drug</b></p>
-                    :  null
-                  }
-              </Col>  
 
               </Row>
             </Col>
