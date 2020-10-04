@@ -67,7 +67,7 @@ class Graph extends Component {
                         }
                     }
                 var width = window.innerWidth //window.innerWidth
-                var height = window.innerHeight //window.innerHeight
+                var height = window.innerHeight + 400 //window.innerHeight
 
 
 
