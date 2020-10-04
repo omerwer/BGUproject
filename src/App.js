@@ -119,7 +119,7 @@ onEnter(e) {
 
 render(){
   let diseaseName = this.state.value
-  return( 
+  return(
   <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
     backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container fluid  >
@@ -137,11 +137,11 @@ render(){
 
               { /******************* Header and Search Bar  ********************/}
 
-              <Col xs={4}>
+              <Col xs={5}>
               <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
-                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
+                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug</h1>
  
-                    <Form >
+                    <Form ><br/>
                       <Form.Group controlId="formBasicRange">
                         <Form.Control type="text" placeholder="Enter Disease Name" 
                         value={diseaseName}
@@ -161,6 +161,8 @@ render(){
                           aria-controls="example-fade-text"
                           aria-expanded={this.state.open}  > SUMBIT <br/>
                         </Button>
+
+
                         {/* <Fade in={this.state.open}>
         <div id="example-fade-text">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
@@ -198,12 +200,12 @@ render(){
 
           { /*******************Graph Chart ********************/}
 
-          <Row fluid style={{height: '1080px', width: '1800px'}}> 
-            <Col  fluid tyle={{ height: '1080px', width: '1800px' ,backgroundColor: 'green'}}>
+          <Row>
+            <Col >
             <Fade in={this.state.open}>
               <div id="example-fade-text">
               { 
-                     <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> 
+                     <Graph jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/>
                       
                     }
               </div>

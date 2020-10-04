@@ -25,10 +25,10 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
-                <Row fluid>
-                    <Col fluid>
+                <Row>
+                    <Col>
                         <svg className = 'GraphSvg' 
-                           style={{ backgroundColor: 'white',  height: '1080px', width: '1920px', overflow: 'auto',
+                           style={{ backgroundColor: 'white',  height: '1080px', width: '100%', overflow: 'auto',
                            border: '3px solid green' }}
                             ref='canvas'>
                     
@@ -66,8 +66,8 @@ class Graph extends Component {
 
                         }
                     }
-                var width = 1920 //window.innerWidth
-                var height = 1080//window.innerHeight
+                var width = window.innerWidth //window.innerWidth
+                var height = window.innerHeight//window.innerHeight
 
 
                 var svg = d3.select(this.refs.canvas).attr('viewbox',[0,0,width,height])
@@ -103,7 +103,7 @@ class Graph extends Component {
                     .data(links)
                     .enter().append("line")
                     .attr("stroke-dasharray", 3)
-                        .attr("stroke", "rgba(50, 50, 50, 0.2)")
+                        .attr("stroke", "rgba(50, 50, 50, 0.4)")
 
                 function getNodeColor(node) {
                 return node.type === 'disease' ? 'red' :
@@ -124,7 +124,7 @@ class Graph extends Component {
                 .selectAll("circle")
                 .data(getProteins(nodes))
                 .enter().append("circle")
-                    .attr("r", 10)
+                    .attr("r", 8)
                     .attr("fill", getNodeColor)
                     .on("mouseover", function (d) {
                         d3.select(this).style("fill", "yellow")
@@ -152,7 +152,7 @@ class Graph extends Component {
                     .selectAll("circle")
                     .data(getDrugs(nodes))
                     .enter().append("circle")
-                        .attr("r", 5)
+                        .attr("r", 6)
                         .attr("fill", getNodeColor)
                     .on("mouseover", function (d) {
                         d3.select(this).style("fill", "yellow")
@@ -167,11 +167,11 @@ class Graph extends Component {
                 .data(nodes)
                 .enter().append("text")
                     .text(function (node) { return  node.name })
-                    .attr("font-size", 12)
+                    .attr("font-size", 11)
                     .attr("dx", 15)
                     .attr("dy", 4)
                     .attr("fill", getNodeColor)
-                    .attr("fontWeight","bold")
+                    .attr("font-weight","bold")
 
 
                 simulation.nodes(nodes).on('tick', () => {
