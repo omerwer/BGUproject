@@ -119,7 +119,7 @@ onEnter(e) {
 
 render(){
   let diseaseName = this.state.value
-  return(
+  return( 
   <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
     backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container fluid  >
@@ -139,7 +139,7 @@ render(){
 
               <Col xs={8}>
               <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
-                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug</h1>
+                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
  
                     <Form ><br/>
                       <Form.Group controlId="formBasicRange">
@@ -161,8 +161,6 @@ render(){
                           aria-controls="example-fade-text"
                           aria-expanded={this.state.open}  > SUBMIT <br/>
                         </Button>
-
-
                         {/* <Fade in={this.state.open}>
         <div id="example-fade-text">
           Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
@@ -200,8 +198,8 @@ render(){
 
           { /*******************Graph Chart ********************/}
 
-          <Row>
-            <Col >
+          <Row >
+            <Col  >
             <Fade in={this.state.open}>
               <div id="example-fade-text">
               { 
