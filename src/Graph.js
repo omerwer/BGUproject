@@ -125,6 +125,11 @@ class Graph extends Component {
                 .enter().append("circle")
                     .attr("r", 10)
                     .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "blue")
+                    })
                     
 
                 var nodeElementsDiseases = svg.append("g")
@@ -135,6 +140,11 @@ class Graph extends Component {
                     .attr("width", 20)
                     .attr("height", 20)
                     .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "red")
+                    })
 
                 var nodeElementsDrugs = svg.append("g")
                     .attr("class", "nodes")
@@ -143,6 +153,11 @@ class Graph extends Component {
                     .enter().append("circle")
                         .attr("r", 5)
                         .attr("fill", getNodeColor)
+                    .on("mouseover", function (d) {
+                        d3.select(this).style("fill", "yellow")
+                    }).on("mouseout", function (d) {
+                        d3.select(this).style("fill", "#348017")
+                    })
                     
 
                 var textElements = svg.append("g")

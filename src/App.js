@@ -131,7 +131,7 @@ render(){
 
               { /******************* Header and Search Bar  ********************/}
 
-              <Col xs={4}>
+              <Col xs={5}>
               <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
                   textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
  
