@@ -159,7 +159,7 @@ render(){
                         }
                           
                           aria-controls="example-fade-text"
-                          aria-expanded={this.state.open}  > SUMBIT <br/>
+                          aria-expanded={this.state.open}  > SUBMIT <br/>
                         </Button>
 
 
