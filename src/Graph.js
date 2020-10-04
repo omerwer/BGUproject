@@ -25,10 +25,11 @@ class Graph extends Component {
         console.log(`data: ${this.props.proteins}`)
 
         return (
-                <Row fluid style ={{backgroundColor:'red'}}>
+                <Row fluid>
                     <Col fluid>
                         <svg className = 'GraphSvg' 
-                            style ={{ heigh: '1000px', width:'1000px'}}
+                           style={{ backgroundColor: 'white',  height: '1080px', width: '1920px', overflow: 'auto',
+                           border: '3px solid green' }}
                             ref='canvas'>
                     
 

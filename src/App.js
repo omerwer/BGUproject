@@ -114,63 +114,71 @@ onEnter(e) {
 render(){
   let diseaseName = this.state.value
   return( 
+  <body style = {{backgroundImage: 'url(https://media.gettyimages.com/illustrations/protein-molecules-artwork-illustration-id513090381)',
+    backgroundRepeat: 'no-repeat', backgroundSize: 'cover'}}>
     <Container fluid  >
-    { /******************* Header  ********************/}
+    { /******************* Site Header  ********************/}
 
       <Row >
         <Col> 
-          <Row>
-            <Col>
-              <h1>Disease - Protein - Drug </h1>
-            </Col>
-          </Row>
+            <Row>
+            { /******************* LOGO  ********************/}
 
-                <Row>
-                  <Col xs={2} style={{ backgroundColor: '#F0B27A ', height: 'auto' }}>
-                    <img src = 'BGU_logo.png' class="img-fluid"/>
-                  </Col>
+              <Col xs={1.5}>
+                <img src = "https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Ben-Gurion_University_of_the_Negev.svg/1200px-Ben-Gurion_University_of_the_Negev.svg.png"  style={{  height: '200px', width: '200px' }}/>
+              </Col>
 
-                  <Col xs={6}>
 
-                      <h2 style={{backgroundColor: '#F0B27A '}}>Search Bar</h2>
+              { /******************* Header and Search Bar  ********************/}
 
-                        <Form>
-                          <Form.Group controlId="formBasicRange">
-                            <Form.Control type="text" placeholder="Enter Disease Name" 
-                            value={diseaseName}
-                            onChange={(e) => this.onInput(e)}
-                            />
-                            <Button variant="primary"
-                              className="button"
-                              onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
-                            </Button>
-                          </Form.Group>
-                          </Form>
+              <Col xs={4}>
+              <h1 style={{display: 'flex', justifyContent: 'center', fontFamily: 'Arial Black',
+                  textShadow: '3px 6px 2px rgba(0, 0, 0, .3)', color: 'white'}}>Disease - Protein - Drug </h1>
+ 
+                    <Form >
+                      <Form.Group controlId="formBasicRange">
+                        <Form.Control type="text" placeholder="Enter Disease Name" 
+                        value={diseaseName}
+                        onChange={(e) => this.onInput(e)}
+                        style={{display: 'flex', justifyContent: 'center'}}
+                        
+                        />
+                        <Button variant="primary"
+                          className="button"
+                          onClick={(e) => this.onEnter(e)}> SUMBIT <br/>
+                        </Button>
+                      </Form.Group>
+                      </Form>
 
-                  </Col>
-                
-                  <Col xs={2}>
-                        <div style={{ backgroundColor: 'white', height: 'auto' , color: 'black', border: 'outset', fontSize:'19px'}}>
-                        <p><b><u>Legend</u><br></br> </b> <br/>
+              </Col>
 
-                      <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
 
-                          <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+              { /******************* Legend  ********************/}
 
-                          <span class="c-d-cl"><span></span></span><b>Drug</b></p>
-                      </div>
-                  </Col>
+              <Col xs={8} style={{height: 'auto' , color: 'white', fontSize:'19px',}}>
+                {   
+                this.state.view ? 
+                    <p>
+                    <span class="r-cl" ><span></span></span><b>Disease<br></br></b>
+
+                    <span class="c-p-cl"><span></span></span><b>Protein<br></br></b>
+
+                    <span class="c-d-cl"><span></span></span><b>Drug</b></p>
+                    :  null
+                  }
+              </Col>  
 
               </Row>
             </Col>
           </Row>
+
           { /******************* END OF Header  ********************/}
 
 
           { /*******************Graph Chart ********************/}
 
-          <Row fluid style={{ backgroundColor: 'blue'}}> 
-            <Col fluid tyle={{ backgroundColor: 'green'}}>
+          <Row fluid style={{height: '1080px', width: '1800px'}}> 
+            <Col  fluid tyle={{ height: '1080px', width: '1800px' ,backgroundColor: 'green'}}>
               { 
                 this.state.view ? <Graph fluid jsonData = {this.state.jsonData} diseaseName ={this.state.disease} proteins = {this.state.proteins} drugs={this.state.drugs}/> :
                 null 
@@ -183,6 +191,8 @@ render(){
 
 
     </Container>
+    </body>
+
   )
 
 }
