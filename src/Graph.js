@@ -31,11 +31,10 @@ class Graph extends Component {
                            style={{ backgroundColor: 'white',  height: '1080px', width: '1920px', overflow: 'auto',
                            border: '3px solid green' }}
                             ref='canvas'>
-                    
-
                         </svg>
                     </Col>
                 </Row>
+
    
        
         );
@@ -107,7 +106,7 @@ class Graph extends Component {
 
                 function getNodeColor(node) {
                 return node.type === 'disease' ? 'red' :
-                node.type === 'protein' ? 'blue' : 'green'
+                node.type === 'protein' ? 'blue' : '#348017'
                 }
 
                 function getProteins(nodesList) {

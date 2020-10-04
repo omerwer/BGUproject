@@ -184,7 +184,6 @@ render(){
                 null 
               }
             </Col>
-          
           </Row>
 
           { /*******************END OF Graph Chart ********************/}
