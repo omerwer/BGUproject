@@ -215,7 +215,7 @@ class App extends Component {
                           color: "white",
                           fontSize: "19px",
                           marginLeft: "200px",
-
+                          marginTop:"60px"
                         }}
                       >
                         {this.state.view ? (
