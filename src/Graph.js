@@ -22,7 +22,7 @@ class Graph extends Component {
     render() {
         d3.selectAll("svg > *").remove();
 
-        console.log(`data: ${this.props.proteins}`)
+        //console.log(`data: ${this.props.proteins}`)
 
         return (
                 <Row >
@@ -43,7 +43,7 @@ class Graph extends Component {
 
 
     makeGraph(data, diseaseName, prots,drugs) {
-        console.log('disease :' + diseaseName + ' prots: ' + prots)
+       // console.log('disease :' + diseaseName + ' prots: ' + prots)
                 if(data.hasOwnProperty(diseaseName)) { 
                     console.log('starting to paint graph...')
                     let nodes = []
