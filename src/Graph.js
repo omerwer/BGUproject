@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as d3 from 'd3'
 import { Container,Card } from "react-bootstrap";
-import { Row, Col, Navbar } from 'react-bootstrap';
+import { Row, Col } from 'react-bootstrap';
 
 class Graph extends Component {
     constructor(props) {
