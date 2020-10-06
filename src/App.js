@@ -9,7 +9,6 @@ import 'bootstrap/dist/css/bootstrap.css';
 import 'react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css';
 
 
-import RangeSlider from 'react-bootstrap-range-slider'
 import { Button, Container, Form, Card,Row, Col, Navbar,Fade } from 'react-bootstrap';
 import { MemoryRouter, Switch, Route } from 'react-router-dom';
 import Jumbotron from 'react-bootstrap/Jumbotron';
