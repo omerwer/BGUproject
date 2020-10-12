@@ -1,5 +1,10 @@
 import React, { Component, Fragment } from "react";
 import PropTypes from "prop-types";
+import {
+  ListGroup,
+  Form,
+
+} from "react-bootstrap";
 
 class Autocomplete extends Component {
   static propTypes = {
@@ -102,7 +107,7 @@ class Autocomplete extends Component {
     if (showSuggestions && userInput) {
       if (filteredSuggestions.length) {
         suggestionsListComponent = (
-          <ul class="suggestions">
+          <ListGroup className="suggestions">
             {filteredSuggestions.map((suggestion, index) => {
               let className;
 
@@ -112,31 +117,37 @@ class Autocomplete extends Component {
               }
 
               return (
-                <li className={className} key={suggestion} onClick={onClick}>
+                <ListGroup.Item className={className} key={suggestion} onClick={onClick}>
                   {suggestion}
-                </li>
+                </ListGroup.Item>
               );
             })}
-          </ul>
+          </ListGroup>
         );
       } else {
         suggestionsListComponent = (
-          <div class="no-suggestions">
-            <em>No suggestions, you're on your own!</em>
-          </div>
+          <ListGroup className="no-suggestions">
+            <ListGroup.Item>No suggestions, you're on your own!</ListGroup.Item>
+          </ListGroup>
         );
       }
     }
 
     return (
-      <Fragment>
-        <input
-          type="text"
-          onChange={onChange}
-          onKeyDown={onKeyDown}
-          value={userInput}
-        />
+      <Fragment                             
+      >
+        <Form>
+        <Form.Group controlId="formBasicDisease">
+           <Form.Control type="text" placeholder="Enter disease name (i.e COVID-19)" 
+            type="text"
+            onChange={onChange}
+            onKeyDown={onKeyDown}
+            value={userInput}
+            
+          />
         {suggestionsListComponent}
+        </Form.Group>
+        </Form>
       </Fragment>
     );
   }
