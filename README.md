@@ -1,8 +1,40 @@
+
+# Diseases & Proteins Graph - Web App
+## Designed for Making Biomedical Research Easier
+
+
+## Table of contents
+* [General info](#general-info)
+* [Technologies](#technologies)
+* [Setup](#setup)
+
+## General-Info
+This project is made to help BGU researchers to analyze and visualize information graphically for artificial intelligence tasks in the medical field, for the benefit of improving ML models.
+
+## Live Demo: https://nivrichter.github.io/d3-web-app-demo/
+Just enter the link above and enter a disease name. A network graph will show up. All proteins that the disease affect them are linked to the disease, and each protein is linked to all availbe drugs. 
+<p>
+  https://nivrichter.github.io/d3-web-app-demo/
+</p>
+
+![](https://media.giphy.com/media/SjcGbykvoufYJBXWOf/giphy.gif) 
+![](https://media.giphy.com/media/52RgDLV0TRm1S93L9a/giphy.gif)
+
+## Technologies
+D3js, React, Bootsrap 4, JS, Python-pandas.
+
+# Setup
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+To run this project, install it locally using npm: npm start
 
 ## Available Scripts
 
 In the project directory, you can run:
+```
+$ npm install
+$ npm start
+```
 
 ### `npm start`
 
@@ -36,33 +68,5 @@ If you aren’t satisfied with the build tool and configuration choices, you can
 Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
 You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+## Authors
+ * Niv Richter, nivrichter@gmail.com
