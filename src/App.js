@@ -3,28 +3,27 @@ import "./App.css";
 import Graph from "./Graph.js";
 import Autocomplete from "./Autocomplete.jsx";
 
+
+
 import "bootstrap/dist/css/bootstrap.css";
 import "react-bootstrap-range-slider/dist/react-bootstrap-range-slider.css";
 
-import RangeSlider from "react-bootstrap-range-slider";
 import {
   Button,
   Container,
-  Form,
-  Card,
   Row,
   Col,
-  Navbar,
-  Fade
+  Fade,
+  Table,
+  ListGroup,
 } from "react-bootstrap";
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.handler = this.handler.bind(this);
+    this.AutoCompleteHandler = this.AutoCompleteHandler.bind(this);
     this.hideChart = this.hideChart.bind(this);
     this.state = {
-      userName: "Barak",
       value: "",
       disease: "",
       jsonData: {},
@@ -41,7 +40,7 @@ class App extends Component {
       open: false
     });
   }
-  handler(e, val) {
+  AutoCompleteHandler(e, val) {
     this.setState({
       disease: val,
       value: val
@@ -50,7 +49,7 @@ class App extends Component {
   componentDidMount() {
     console.log("mounting APP");
     let url = "https://api.jsonbin.io/b/5f74bd117243cd7e824742f6";
-    const response = fetch(url, {
+    fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -63,11 +62,11 @@ class App extends Component {
       .then((res) => res.json())
       .then((data) => {
         this.setState((prevState) => ({ jsonData: data }));
-        this.getDiseases();
+        this.getDiseases(data);
       });
 
     url = "https://api.jsonbin.io/b/5f762e2c7243cd7e82484f0c";
-    const response2 = fetch(url, {
+    fetch(url, {
       method: "GET", // *GET, POST, PUT, DELETE, etc.
       mode: "cors", // no-cors, *cors, same-origin
       cache: "no-cache", // *default, no-cache, reload, force-cache, only-if-cached
@@ -83,9 +82,9 @@ class App extends Component {
       });
   }
 
-  getDiseases() {
+  getDiseases(data) {
     var diseases = [];
-    for (var d in this.state.jsonData) {
+    for (var d in data) {
       diseases.push(d);
     }
 
@@ -126,74 +125,56 @@ class App extends Component {
       view: true,
       open: true
     }));
-    //this.getData()
   }
 
   render() {
-    let diseaseName = this.state.value;
     return (
-      <body
-        style={{
-          backgroundImage:
-            "url(https://eskipaper.com/images/high-res-abstract-backgrounds-1.jpg)",
-          backgroundRepeat: "no-repeat",
-          backgroundSize: "cover"
-        }}
-      >
-        <Container fluid>
-          {/******************* Site Header  ********************/}
 
-          <Row>
-            <Col>
-              <Row>
+        <Container fluid 
+        style={ {backgroundImage: "url(https://eskipaper.com/images/high-res-abstract-backgrounds-1.jpg)"}}
+         >
+          {/******************* Site Header  ********************/}
+          <Row  >
                 {/******************* LOGO  ********************/}
 
-                <Col xs={1.5}>
+                <Col md={3} xs={12}>
                   <img
                     src="https://upload.wikimedia.org/wikipedia/en/thumb/2/29/Ben-Gurion_University_of_the_Negev.svg/1200px-Ben-Gurion_University_of_the_Negev.svg.png"
-                    style={{ height: "200px", width: "200px" }}
+                    alt ="" style={{ height:"150px", width: "150px", paddingTop:"10px" }}
                   />
                 </Col>
 
                 {/******************* Header and Search Bar  ********************/}
 
-                <Col xs={8}>
-                  <Row>
-                    <Col>
+                <Col md={6} xs={12}>
+                 
                     <h1
                       style={{
                         display: "flex",
                         justifyContent: "center",
                         fontFamily: "Arial Black",
-                        textShadow: "3px 6px 2px rgba(0, 0, 0, .3)",
                         color: "white"
                       }}
                     >
                       Disease - Protein - Drug{" "}
                   </h1>
                       <br/>
-                    </Col>
-                  </Row>
-                  <Row>
-                  {/*<Form style={{ paddingLeft: "200px", paddingRight: "200px" }}>*/}
-                  {/*  <br />*/}
-                  {/*  <Form.Group controlId="formBasicRange">*/}
-                      {/* <Form.Control
-                        type="text"
-                        placeholder="Enter Disease Name"
-                        value={diseaseName}
-                        onChange={(e) => this.onInput(e)}
-                        style={{ display: "flex", justifyContent: "center" }}
-                      /> */}
-
-                      <Col xs={3} style={{marginLeft:'300px'}}>
+               
+                  <Row   className="justify-content-center"     >
+                    <Col md={5} xs={8}
+                    style={{paddingRight:"0px"}}>
+ 
                       <Autocomplete
                         suggestions={this.state.diseases}
-                        handler={this.handler}
+                        handler={this.AutoCompleteHandler}
                         hideChart={this.hideChart}
-                      />
-                      </Col>
-                    <Col xs={1} style={{marginLeft:'50px'}}>
+                      />               
+                      </Col >
+
+                      <Col md={1} xs={3}
+                                        style={{paddingLeft:"0px"}}
+                                                >
+                   
                       <Button
                           variant="primary"
                           className="button"
@@ -208,63 +189,55 @@ class App extends Component {
                         {" "}
                         SUBMIT <br />
                       </Button>
-                    </Col>
-                      <div
-                        style={{
-                          height: "auto",
-                          color: "white",
-                          fontSize: "19px",
-                          marginLeft: "200px",
-                          marginTop:"60px"
-                        }}
-                      >
-                        {this.state.view ? (
-                          <p>
-                            <span class="r-cl">
-                              <span></span>
-                            </span>
-                            <b>
-                              Disease<br></br>
-                            </b>
+                      </Col>
 
-                            <span class="c-p-cl">
-                              <span></span>
-                            </span>
-                            <b>
-                              Protein<br></br>
-                            </b>
-
-                            <span class="c-d-cl">
-                              <span></span>
-                            </span>
-                            <b>Drug</b>
-                          </p>
-                        ) : null}
-                      </div>
-                      {/* <Fade in={this.state.open}>
-        <div id="example-fade-text">
-          Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus
-          terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer
-          labore wes anderson cred nesciunt sapiente ea proident.
-        </div>
-      </Fade> */}
-                  {/*  </Form.Group>*/}
-
-                  {/*</Form>*/}
+                   
                   </Row>
-                </Col>
-
+                </Col >
                 {/******************* Legend  ********************/}
-              </Row>
+
+                <Col xs={3}>
+                <Fade in={this.state.open}>
+
+                         <Table
+                          style={{
+                            marginTop:"50px",
+                            height: "auto",
+                            width:"200px",
+                            color: "white",
+                            fontSize: "19px",
+                            display: "flex",
+                            justifyContent: "center",
+                                  }}>
+
+                            {
+                              this.state.view ? 
+                                    <tbody>
+                                      <tr >
+                                        <td className="r-cl" >Disease</td>
+                                      </tr>
+                                      <tr >
+                                        <td className="c-p-cl">Protein</td>
+                                      </tr>
+                                      <tr>
+                                        <td  className="c-d-cl">Drug</td>
+                                      </tr>
+                                    </tbody>
+                                        : null
+                           }
+
+                        </Table> 
+              </Fade>
             </Col>
+
           </Row>
 
           {/******************* END OF Header  ********************/}
 
           {/*******************Graph Chart ********************/}
 
-          <Row>
-            <Col>
+          <Row style={{marginTop:"20px", width:"100%"}}>
+            <Col style={{width:"100%"}}>
               <Fade in={this.state.open}>
                 <div id="example-fade-text">
                   {
@@ -280,9 +253,9 @@ class App extends Component {
             </Col>
           </Row>
 
+
           {/*******************END OF Graph Chart ********************/}
         </Container>
-      </body>
     );
   }
 }
