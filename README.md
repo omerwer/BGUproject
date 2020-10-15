@@ -11,10 +11,10 @@
 ## General-Info
 This project is made to help BGU researchers to analyze and visualize information graphically for artificial intelligence tasks in the medical field, for the benefit of improving ML models.
 
-## Live Demo: https://nivrichter.github.io/d3-web-app-demo/
+## Live Demo: https://yy3p0.csb.app/
 Just enter the link above and enter a disease name. A network graph will show up. All proteins that the disease affect them are linked to the disease, and each protein is linked to all availbe drugs. 
 <p>
-  https://nivrichter.github.io/d3-web-app-demo/
+  https://github.com/omerwer/BGUproject
 </p>
 
 ![](https://media.giphy.com/media/SjcGbykvoufYJBXWOf/giphy.gif) 
