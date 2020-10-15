@@ -71,4 +71,4 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 ## Authors
  * Omer Wertheimer, omer.wertheimer@gmail.com
  * Niv Richter, nivrichter@gmail.com
- * Barak Hadad, 
+ * Barak Hadad, hadba@post.bgu.ac.il
