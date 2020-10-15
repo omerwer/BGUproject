@@ -13,9 +13,6 @@ This project is made to help BGU researchers to analyze and visualize informatio
 
 ## Live Demo: https://yy3p0.csb.app/
 Just enter the link above and enter a disease name. A network graph will show up. All proteins that the disease affect them are linked to the disease, and each protein is linked to all availbe drugs. 
-<p>
-  https://github.com/omerwer/BGUproject
-</p>
 
 ![](https://media.giphy.com/media/SjcGbykvoufYJBXWOf/giphy.gif) 
 ![](https://media.giphy.com/media/52RgDLV0TRm1S93L9a/giphy.gif)
